@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inspiration Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      background-color: #333;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+    
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    .quote {
+      width: 300px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 10px;
+      text-align: center;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .quote:hover {
+      transform: translateY(-5px);
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    p {
+      color: #555;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    
+    /* Step 2: Responsive Design */
+    @media only screen and (max-width: 600px) {
+      .quote {
+        width: 90%;
+      }
+    }
+    
+    /* Step 6: Font Awesome Icons */
+    .social-icons {
+      margin-top: 10px;
+    }
+    
+    .social-icons a {
+      display: inline-block;
+      margin-right: 5px;
+      color: #555;
+      font-size: 20px;
+    }
+    
+    /* Step 7: Typography Enhancements */
+    h1 {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 32px;
+      letter-spacing: 1px;
+    }
+    
+    p.quote-text {
+      font-family: "Georgia", serif;
+      font-size: 20px;
+    }
+  </style>
+  <!-- Step 6: Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>Inspiration Gallery</h1>
+  </header>
+  
+  <main id="gallery"></main>
+  
+  <script>
+    const quotes = [
+      {
+        quote: "Believe you can and you're halfway there.",
+        image: "image1.jpg"
+      },
+      {
+        quote: "The future belongs to those who believe in the beauty of their dreams.",
+        image: "image2.jpg"
+      },
+      {
+        quote: "Don't watch the clock; do what it does. Keep going.",
+        image: "image3.jpg"
+      }
+    ];
+    
+    function generateGallery() {
+      const galleryElement = document.getElementById("gallery");
+      
+      quotes.forEach(quote => {
+        const quoteElement = document.createElement("div");
+        quoteElement.classList.add("quote");
+        
+        const imageElement = document.createElement("img");
+        imageElement.src = quote.image;
+        
+        const quoteTextElement = document.createElement("p");
+        quoteTextElement.classList.add("quote-text");
+        quoteTextElement.textContent = quote.quote;
+        
+        const socialIconsElement = document.createElement("div");
+        socialIconsElement.classList.add("social-icons");
+        
+        // Step 10: User Interaction
+        const likeButtonElement = document.createElement("button");
+        likeButtonElement.innerHTML = '<i class="far fa-heart"></i> Like';
+        likeButtonElement.addEventListener("click", () => {
+          likeButtonElement.classList.toggle("liked");
+        });
+        
+        // Step 6: Font Awesome Icons
+        const facebookIconElement = document.createElement("a");
+        facebookIconElement.href = "#";
+        facebookIconElement.innerHTML = '<i class="fab fa-facebook"></i>';
+        
+        const twitterIconElement = document.createElement("a");
+        twitterIconElement.href = "#";
+        twitterIconElement.innerHTML = '<i class="fab fa-twitter"></i>';
+        
+        const instagramIconElement = document.createElement("a");
+        instagramIconElement.href = "#";
+        instagramIconElement.innerHTML = '<i class="fab fa-instagram"></i>';
+        
+        quoteElement.appendChild(imageElement);
+        quoteElement.appendChild(quoteTextElement);
+        quoteElement.appendChild(socialIconsElement);
+        socialIconsElement.appendChild(likeButtonElement);
+        socialIconsElement.appendChild(facebookIconElement);
+        socialIconsElement.appendChild(twitterIconElement);
+        socialIconsElement.appendChild(instagramIconElement);
+        
+        galleryElement.appendChild(quoteElement);
+      });
+    }
+    
+    generateGallery();
+  </script>
+</body>
+</html>
